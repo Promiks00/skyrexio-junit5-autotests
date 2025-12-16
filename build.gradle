@@ -21,11 +21,8 @@ ext {
 }
 
 dependencies {
-    // JUnit BOM управляет версиями всех модулей JUnit 5
-    testImplementation platform("org.junit:junit-bom:$junitVersion")
-
     // JUnit Jupiter
-    testImplementation "org.junit.jupiter:junit-jupiter"
+    testImplementation "org.junit.jupiter:junit-jupiter:$junitVersion"
 
     // Selenide
     testImplementation "com.codeborne:selenide:$selenideVersion"
