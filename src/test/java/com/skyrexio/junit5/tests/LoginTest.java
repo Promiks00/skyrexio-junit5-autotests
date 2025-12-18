@@ -5,10 +5,10 @@ import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 
-public class LoginTest {
+public class LoginTest extends BaseTest {
     @Test
     void validLoginTest() {
-        open("https://test.skyrexio.com/login");
+        open("/login");
         $("[placeholder=Email]").setValue("wheel64959@mriscan.live");
         $("[type='password']").setValue("JR7-iWB-j5q-SnK").pressEnter();
         $x("//*[text()='Статистика']").shouldHave(text("Статистика"));
@@ -16,7 +16,7 @@ public class LoginTest {
 
     @Test
     void invalidEmailLoginTest() {
-        open("https://test.skyrexio.com/login");
+        open("/login");
         $("[placeholder=Email]").setValue("wheel@mriscan.live");
         $("[type='password']").setValue("JR7-iWB-j5q-SnK").pressEnter();
         $("div[data-title]").shouldHave(text("Неверный email или пароль"));
@@ -24,7 +24,7 @@ public class LoginTest {
 
     @Test
     void invalidPasswordLoginTest() {
-        open("https://test.skyrexio.com/login");
+        open("/login");
         $("[placeholder=Email]").setValue("wheel64959@mriscan.live");
         $("[type='password']").setValue("JR7-iWB-j5q-S").pressEnter();
         $("div[data-title]").shouldHave(text("Неверный email или пароль"));
