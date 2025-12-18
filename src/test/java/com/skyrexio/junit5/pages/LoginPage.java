@@ -9,29 +9,39 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class LoginPage {
-    private static final String TITLE_TEXT = "Войдите в свой аккаунт";
-    private static final String LOGIN_ERROR_TOAST_TEXT = "Неверный email или пароль";
+    private static final String
+            TITLE_TEXT = "Войдите в свой аккаунт",
+            LOGIN_ERROR_TOAST_TEXT = "Неверный email или пароль";
 
-    private final SelenideElement titleElement = $(byText(TITLE_TEXT));
-    private final SelenideElement emailInput = $("[placeholder=Email]");
-    private final SelenideElement passwordInput = $("[type='password']");
-    private final SelenideElement loginErrorToast = $("div[data-title]");
+    private final SelenideElement
+            titleElement = $(byText(TITLE_TEXT)),
+            emailInput = $("[placeholder=Email]"),
+            passwordInput = $("[type='password']"),
+            loginErrorToast = $("div[data-title]");
 
-    public void openLoginPage() {
+    public LoginPage openLoginPage() {
         open("/login");
         titleElement.shouldHave(text(TITLE_TEXT));
+
+        return this;
     }
 
-    public void setEmail(String email) {
+    public LoginPage setEmail(String email) {
         emailInput.setValue(email);
+
+        return this;
     }
 
-    public void setPassword(String password) {
+    public LoginPage setPassword(String password) {
         passwordInput.setValue(password);
+
+        return this;
     }
 
-    public void pressEnterOnPassword() {
+    public LoginPage pressEnterOnPassword() {
         passwordInput.pressEnter();
+
+        return this;
     }
 
     public void shouldSeeInvalidLoginToast() {
