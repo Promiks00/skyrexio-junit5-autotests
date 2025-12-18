@@ -2,9 +2,6 @@ package com.skyrexio.junit5.tests;
 
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.*;
-
 public class LoginTest extends BaseTest {
     String validEmail = "wheel64959@mriscan.live";
     String validPassword = "JR7-iWB-j5q-SnK";
@@ -17,7 +14,8 @@ public class LoginTest extends BaseTest {
         loginPage.setEmail(validEmail);
         loginPage.setPassword(validPassword);
         loginPage.pressEnterOnPassword();
-        $x("//*[text()='Статистика']").shouldHave(text("Статистика"));
+
+        mainPage.shouldSeeStatisticsOnMainPage();
     }
 
     @Test
