@@ -10,32 +10,21 @@ public class LoginTest extends BaseTest {
 
     @Test
     void validLoginTest() {
-        loginPage
-                .openLoginPage()
-                .setEmail(validEmail)
-                .setPassword(validPassword)
-                .pressEnterOnPassword();
-
+        loginPage.login(validEmail, validPassword);
         mainPage.shouldSeeStatisticsOnMainPage();
     }
 
     @Test
     void incorrectEmailLoginTest() {
-        loginPage.
-                openLoginPage()
-                .setEmail(incorrectEmail)
-                .setPassword(validPassword)
-                .pressEnterOnPassword()
+        loginPage
+                .login(incorrectEmail, validPassword)
                 .shouldSeeInvalidLoginToast();
     }
 
     @Test
     void incorrectPasswordLoginTest() {
         loginPage
-                .openLoginPage()
-                .setEmail(validEmail)
-                .setPassword(incorrectPassword)
-                .pressEnterOnPassword()
+                .login(validEmail, incorrectPassword)
                 .shouldSeeInvalidLoginToast();
     }
 }

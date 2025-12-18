@@ -48,4 +48,13 @@ public class LoginPage {
         loginErrorToast.shouldBe(visible)
                 .shouldHave(text(LOGIN_ERROR_TOAST_TEXT));
     }
+
+    public LoginPage login(String email, String password) {
+        openLoginPage();
+        setEmail(email);
+        setPassword(password);
+        pressEnterOnPassword();
+
+        return this;
+    }
 }
