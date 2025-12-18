@@ -13,4 +13,20 @@ public class LoginTest {
         $("[type='password']").setValue("JR7-iWB-j5q-SnK").pressEnter();
         $x("//*[text()='Статистика']").shouldHave(text("Статистика"));
     }
+
+    @Test
+    void invalidEmailLoginTest() {
+        open("https://test.skyrexio.com/login");
+        $("[placeholder=Email]").setValue("wheel@mriscan.live");
+        $("[type='password']").setValue("JR7-iWB-j5q-SnK").pressEnter();
+        $("div[data-title]").shouldHave(text("Неверный email или пароль"));
+    }
+
+    @Test
+    void invalidPasswordLoginTest() {
+        open("https://test.skyrexio.com/login");
+        $("[placeholder=Email]").setValue("wheel64959@mriscan.live");
+        $("[type='password']").setValue("JR7-iWB-j5q-S").pressEnter();
+        $("div[data-title]").shouldHave(text("Неверный email или пароль"));
+    }
 }
