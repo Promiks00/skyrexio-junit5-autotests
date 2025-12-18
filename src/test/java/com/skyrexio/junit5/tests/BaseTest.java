@@ -1,11 +1,12 @@
 package com.skyrexio.junit5.tests;
 
 import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.AfterEach;
+import com.skyrexio.junit5.pages.LoginPage;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 
 public class BaseTest {
+    LoginPage loginPage = new LoginPage();
+
     @BeforeAll
     static void beforeAll() {
         Configuration.baseUrl = "https://test.skyrexio.com";

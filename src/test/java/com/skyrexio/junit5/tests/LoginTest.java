@@ -6,27 +6,35 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 
 public class LoginTest extends BaseTest {
+    String validEmail = "wheel64959@mriscan.live";
+    String validPassword = "JR7-iWB-j5q-SnK";
+    String incorrectEmail = "wheel@mriscan.live";
+    String incorrectPassword = "JR7-iWB-j5q-S";
+
     @Test
     void validLoginTest() {
-        open("/login");
-        $("[placeholder=Email]").setValue("wheel64959@mriscan.live");
-        $("[type='password']").setValue("JR7-iWB-j5q-SnK").pressEnter();
+        loginPage.openLoginPage();
+        loginPage.setEmail(validEmail);
+        loginPage.setPassword(validPassword);
+        loginPage.pressEnterOnPassword();
         $x("//*[text()='Статистика']").shouldHave(text("Статистика"));
     }
 
     @Test
-    void invalidEmailLoginTest() {
-        open("/login");
-        $("[placeholder=Email]").setValue("wheel@mriscan.live");
-        $("[type='password']").setValue("JR7-iWB-j5q-SnK").pressEnter();
-        $("div[data-title]").shouldHave(text("Неверный email или пароль"));
+    void incorrectEmailLoginTest() {
+        loginPage.openLoginPage();
+        loginPage.setEmail(incorrectEmail);
+        loginPage.setPassword(validPassword);
+        loginPage.pressEnterOnPassword();
+        loginPage.shouldSeeInvalidLoginToast();
     }
 
     @Test
-    void invalidPasswordLoginTest() {
-        open("/login");
-        $("[placeholder=Email]").setValue("wheel64959@mriscan.live");
-        $("[type='password']").setValue("JR7-iWB-j5q-S").pressEnter();
-        $("div[data-title]").shouldHave(text("Неверный email или пароль"));
+    void incorrectPasswordLoginTest() {
+        loginPage.openLoginPage();
+        loginPage.setEmail(validEmail);
+        loginPage.setPassword(incorrectPassword);
+        loginPage.pressEnterOnPassword();
+        loginPage.shouldSeeInvalidLoginToast();
     }
 }
