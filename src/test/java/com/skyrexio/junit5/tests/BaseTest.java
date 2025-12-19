@@ -6,6 +6,9 @@ import com.skyrexio.junit5.pages.MainPage;
 import org.junit.jupiter.api.BeforeAll;
 
 public class BaseTest {
+    protected final String validEmail = "wheel64959@mriscan.live";
+    protected final String validPassword = "JR7-iWB-j5q-SnK";
+
     LoginPage loginPage = new LoginPage();
     MainPage mainPage = new MainPage();
 

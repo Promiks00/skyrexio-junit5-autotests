@@ -57,4 +57,9 @@ public class LoginPage {
 
         return this;
     }
+
+    public void loginAndCheckMainPage(String email, String password, MainPage mainPage) {
+        login(email, password);
+        mainPage.shouldSeeStatisticsOnMainPage();
+    }
 }
