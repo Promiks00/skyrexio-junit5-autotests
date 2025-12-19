@@ -16,30 +16,40 @@ public class TerminalTourComponent {
     private final SelenideElement tourOverlay = $("#tour-svg-portal");
 
 
-    public void btnClick(String btnText) {
+    public TerminalTourComponent btnClick(String btnText) {
         $x(String.format("//button[text()='%s']", btnText)).shouldBe(visible)
                 .shouldHave(text(btnText)).click();
+
+        return this;
     }
 
-    public void checkTerminalTourModalWindow() {
+    public TerminalTourComponent checkTerminalTourModalWindow() {
         modal.shouldBe(visible)
                 .shouldHave(text(MODAL_TITLE));
+
+        return this;
     }
 
-    public void startTourBtnClick(String btnText) {
+    public TerminalTourComponent startTourBtnClick(String btnText) {
         modalStartTourBtn
                 .shouldBe(visible)
                 .shouldHave(text(btnText))
                 .click();
+
+        return this;
     }
 
-    public void tourOverlayNextClick(String titleText) {
+    public TerminalTourComponent tourOverlayNextClick(String titleText) {
         tourOverlay.shouldHave(text(titleText));
         btnClick(NEXT_BTN_TEXT);
+
+        return this;
     }
 
-    public void tourOverlayNextClick(String titleText, String buttonText) {
+    public TerminalTourComponent tourOverlayNextClick(String titleText, String buttonText) {
         tourOverlay.shouldHave(text(titleText));
         btnClick(buttonText);
+
+        return this;
     }
 }

@@ -11,19 +11,21 @@ public class BaseTest {
     protected final String validEmail = "wheel64959@mriscan.live";
     protected final String validPassword = "JR7-iWB-j5q-SnK";
 
-    protected final String startTourText = "Начать тур";
-    protected final String stepFirstText = "Аккаунт и баланс";
-    protected final String stepSecondText = "Обзор баланса";
-    protected final String stepThirdText = "График (TradingView)";
-    protected final String stepFourthText = "Ордер входа";
-    protected final String stepFifthText = "Слайдер размера позиции";
-    protected final String stepSixthText = "Пропустить вход (исп. имеющиеся средства)";
-    protected final String stepSeventhText = "Усреднение (DCA)";
-    protected final String stepEighthText = "Тейк профит цели";
-    protected final String stepNinthText = "Стоп лосс (защитный)";
-    protected final String stepTenthText = "Проверка и создание сделки";
-    protected final String stepEleventhText = "Создать сделку";
-    protected final String finishTourText = "Завершить";
+    protected final String startTourBtnText = "Начать тур";
+
+    protected final String accountAndBalanceStepText = "Аккаунт и баланс";
+    protected final String balanceOverviewStepText = "Обзор баланса";
+    protected final String tradingViewChartStepText = "График (TradingView)";
+    protected final String orderEntryStepText = "Ордер входа";
+    protected final String positionSizeSliderStepText = "Слайдер размера позиции";
+    protected final String skipEntryStepText = "Пропустить вход (исп. имеющиеся средства)";
+    protected final String dcaStepText = "Усреднение (DCA)";
+    protected final String takeProfitStepText = "Тейк профит цели";
+    protected final String stopLossStepText = "Стоп лосс (защитный)";
+    protected final String reviewAndCreateDealStepText = "Проверка и создание сделки";
+    protected final String createDealStepText = "Создать сделку";
+
+    protected final String finishTourBtnText = "Завершить";
 
     LoginPage loginPage = new LoginPage();
     MainPage mainPage = new MainPage();
