@@ -1,6 +1,5 @@
 package com.skyrexio.junit5.tests;
 
-import com.skyrexio.junit5.enums.TerminalTourStep;
 import com.skyrexio.junit5.enums.TourButton;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

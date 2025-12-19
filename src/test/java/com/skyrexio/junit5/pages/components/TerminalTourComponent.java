@@ -13,7 +13,6 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class TerminalTourComponent {
     private static final String MODAL_TITLE = "Добро пожаловать в мульти-ордер терминал";
-    private static final String NEXT_BTN_TEXT = "Следующий";
 
     private final SelenideElement modal = $("div[role='dialog']");
     private final SelenideElement modalStartTourBtn = modal.$("button");
