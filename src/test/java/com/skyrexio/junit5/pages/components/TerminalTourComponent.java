@@ -1,6 +1,8 @@
 package com.skyrexio.junit5.pages.components;
 
 import com.codeborne.selenide.SelenideElement;
+import com.skyrexio.junit5.enums.TerminalTourStep;
+import com.skyrexio.junit5.enums.TourButton;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
@@ -16,9 +18,11 @@ public class TerminalTourComponent {
     private final SelenideElement tourOverlay = $("#tour-svg-portal");
 
 
-    public TerminalTourComponent btnClick(String btnText) {
-        $x(String.format("//button[text()='%s']", btnText)).shouldBe(visible)
-                .shouldHave(text(btnText)).click();
+    public TerminalTourComponent btnClick(TourButton button) {
+        $x(String.format("//button[text()='%s']", button.getText()))
+                .shouldBe(visible)
+                .shouldHave(text(button.getText()))
+                .click();
 
         return this;
     }
@@ -30,25 +34,25 @@ public class TerminalTourComponent {
         return this;
     }
 
-    public TerminalTourComponent startTourBtnClick(String btnText) {
+    public TerminalTourComponent startTourBtnClick(TourButton button) {
         modalStartTourBtn
                 .shouldBe(visible)
-                .shouldHave(text(btnText))
+                .shouldHave(text(button.getText()))
                 .click();
 
         return this;
     }
 
-    public TerminalTourComponent tourOverlayNextClick(String titleText) {
-        tourOverlay.shouldHave(text(titleText));
-        btnClick(NEXT_BTN_TEXT);
+    public TerminalTourComponent tourOverlayNextClick(TerminalTourStep step) {
+        tourOverlay.shouldHave(text(step.getText()));
+        btnClick(TourButton.NEXT);
 
         return this;
     }
 
-    public TerminalTourComponent tourOverlayNextClick(String titleText, String buttonText) {
-        tourOverlay.shouldHave(text(titleText));
-        btnClick(buttonText);
+    public TerminalTourComponent tourOverlayNextClick(TerminalTourStep step, TourButton button) {
+        tourOverlay.shouldHave(text(step.getText()));
+        btnClick(button);
 
         return this;
     }

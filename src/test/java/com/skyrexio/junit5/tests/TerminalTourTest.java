@@ -1,5 +1,7 @@
 package com.skyrexio.junit5.tests;
 
+import com.skyrexio.junit5.enums.TerminalTourStep;
+import com.skyrexio.junit5.enums.TourButton;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -13,19 +15,20 @@ public class TerminalTourTest extends BaseTest {
     @Test
     public void smartTerminalTourTest() {
         terminalTourComponent
-                .btnClick(startTourBtnText)
+                .btnClick(TourButton.START)
                 .checkTerminalTourModalWindow()
-                .startTourBtnClick(startTourBtnText)
-                .tourOverlayNextClick(accountAndBalanceStepText)
-                .tourOverlayNextClick(balanceOverviewStepText)
-                .tourOverlayNextClick(tradingViewChartStepText)
-                .tourOverlayNextClick(orderEntryStepText)
-                .tourOverlayNextClick(positionSizeSliderStepText)
-                .tourOverlayNextClick(skipEntryStepText)
-                .tourOverlayNextClick(dcaStepText)
-                .tourOverlayNextClick(takeProfitStepText)
-                .tourOverlayNextClick(stopLossStepText)
-                .tourOverlayNextClick(reviewAndCreateDealStepText)
-                .tourOverlayNextClick(createDealStepText, finishTourBtnText);
+                .startTourBtnClick(TourButton.START)
+                .tourOverlayNextClick(TerminalTourStep.ACCOUNT_AND_BALANCE)
+                .tourOverlayNextClick(TerminalTourStep.BALANCE_OVERVIEW)
+                .tourOverlayNextClick(TerminalTourStep.TRADINGVIEW_CHART)
+                .tourOverlayNextClick(TerminalTourStep.ORDER_ENTRY)
+                .tourOverlayNextClick(TerminalTourStep.POSITION_SIZE_SLIDER)
+                .tourOverlayNextClick(TerminalTourStep.SKIP_ENTRY)
+                .tourOverlayNextClick(TerminalTourStep.DCA)
+                .tourOverlayNextClick(TerminalTourStep.TAKE_PROFIT)
+                .tourOverlayNextClick(TerminalTourStep.STOP_LOSS)
+                .tourOverlayNextClick(TerminalTourStep.REVIEW_AND_CREATE_DEAL)
+                .tourOverlayNextClick(TerminalTourStep.CREATE_DEAL, TourButton.FINISH);
+
     }
 }
