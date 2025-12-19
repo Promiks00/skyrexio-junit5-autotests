@@ -4,6 +4,8 @@ import com.codeborne.selenide.SelenideElement;
 import com.skyrexio.junit5.enums.TerminalTourStep;
 import com.skyrexio.junit5.enums.TourButton;
 
+import java.util.List;
+
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
@@ -16,6 +18,20 @@ public class TerminalTourComponent {
     private final SelenideElement modal = $("div[role='dialog']");
     private final SelenideElement modalStartTourBtn = modal.$("button");
     private final SelenideElement tourOverlay = $("#tour-svg-portal");
+
+    private final List<TerminalTourStep> tourSteps = List.of(
+            TerminalTourStep.ACCOUNT_AND_BALANCE,
+            TerminalTourStep.BALANCE_OVERVIEW,
+            TerminalTourStep.TRADINGVIEW_CHART,
+            TerminalTourStep.ORDER_ENTRY,
+            TerminalTourStep.POSITION_SIZE_SLIDER,
+            TerminalTourStep.SKIP_ENTRY,
+            TerminalTourStep.DCA,
+            TerminalTourStep.TAKE_PROFIT,
+            TerminalTourStep.STOP_LOSS,
+            TerminalTourStep.REVIEW_AND_CREATE_DEAL,
+            TerminalTourStep.CREATE_DEAL
+    );
 
 
     public TerminalTourComponent btnClick(TourButton button) {
@@ -54,6 +70,18 @@ public class TerminalTourComponent {
         tourOverlay.shouldHave(text(step.getText()));
         btnClick(button);
 
+        return this;
+    }
+
+    public TerminalTourComponent completeTour() {
+        for (int i = 0; i < tourSteps.size(); i++) {
+            TerminalTourStep step = tourSteps.get(i);
+            if (i == tourSteps.size() - 1) {
+                tourOverlayNextClick(step, TourButton.FINISH);
+            } else {
+                tourOverlayNextClick(step);
+            }
+        }
         return this;
     }
 }
