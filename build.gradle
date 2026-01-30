@@ -15,11 +15,24 @@ repositories {
     mavenCentral()
 }
 
+ext {
+    selenideVersion = "7.13.0"
+    junitVersion = "6.0.1"
+    slf4jVersion = "2.0.17"
+}
+
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-    testImplementation 'com.codeborne:selenide:7.12.3'
+    // JUnit Jupiter
+    testImplementation "org.junit.jupiter:junit-jupiter:$junitVersion"
+
+    // Selenide
+    testImplementation "com.codeborne:selenide:$selenideVersion"
+
+    // Logging
+    testImplementation "org.slf4j:slf4j-simple:$slf4jVersion"
+
+    // Запуск тестов JUnit 5
+    testRuntimeOnly "org.junit.platform:junit-platform-launcher"
 }
 
 test {
